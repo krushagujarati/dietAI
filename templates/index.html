@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Diet AI</title>
+</head>
+<body>
+    <h1>Welcome to the Calorie Prediction App</h1>
+    <form action="/result" method="POST">
+        <label for="age">Age:</label><br>
+        <input type="number" id="age" name="age" required><br>
+
+        <label for="gender">Gender:</label><br>
+        <select id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select><br>
+
+        <label for="height">Height (cm):</label><br>
+        <input type="number" id="height" name="height" required><br>
+
+        <label for="weight">Weight (kg):</label><br>
+        <input type="number" id="weight" name="weight" required><br>
+
+        <label for="activity">Activity Level:</label><br>
+        <select id="activity" name="activity" required>
+            <option value="Low">Low</option>
+            <option value="Moderate">Moderate</option>
+            <option value="High">High</option>
+        </select><br>
+
+        <label for="goal">Goal:</label><br>
+        <select id="goal" name="goal" required>
+            <option value="Weight Loss">Weight Loss</option>
+            <option value="Weight Maintenance">Weight Maintenance</option>
+            <option value="Muscle Gain">Muscle Gain</option>
+        </select><br>
+
+        <label for="preference">Diet Preference:</label><br>
+        <select id="preference" name="preference" required>
+            <option value="None" selected>None</option> <!-- Default option -->
+            <option value="Vegetarian">Vegetarian</option>
+            <option value="Non-Vegetarian">Non-Vegetarian</option>
+            <option value="Vegan">Vegan</option>
+        </select><br>
+
+        <label for="lifestyle">Lifestyle:</label><br>
+        <select id="lifestyle" name="lifestyle" required>
+            <option value="Sedentary">Sedentary</option>
+            <option value="Active">Active</option>
+            <option value="Very Active">Very Active</option>
+        </select><br>
+
+        <label for="restriction">Dietary Restrictions:</label><br>
+        <select id="restriction" name="restriction" required>
+            <option value="No Restriction">No Restriction</option>
+            <option value="Dairy Free">Dairy Free</option>
+            <option value="Gluten Free">Gluten Free</option>
+        </select><br>
+
+        <label for="health_condition">Health Condition:</label><br>
+        <select id="health_condition" name="health_condition" required>
+            <option value="None" selected>None</option> <!-- Default option -->
+            <option value="Diabetes">Diabetes</option>
+            <option value="Heart Disease">Heart Disease</option>
+        </select><br>
+
+        <input type="submit" value="Predict Calories">
+    </form>
+</body>
+</html>
