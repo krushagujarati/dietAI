@@ -4,11 +4,126 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <title>Result</title>
+    <title>DietAI-Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .result-box {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        .result-box strong {
+            font-size: 1.5rem;
+            color: #4caf50;
+        }
+
+        .macronutrient {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        .recipes, .workouts {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .recipe, .workout {
+            padding: 10px;
+            background-color: #eee;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .recipe a, .workout a {
+            text-decoration: none;
+            color: #0a0908;
+            font-weight: bold;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #0a0908;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            background-color: #333;
+        }
+    </style>
 </head>
 <body>
-    <h1>Calorie Prediction Result</h1>
-    <p>Your daily recommended calorie intake is: <strong>{{ calories }} kcal/day</strong></p>
-    <a href="/">Go back</a>
+
+    <div class="result-box">
+        <h1>Calorie Prediction Result</h1>
+        <p>Your daily recommended calorie intake is:</p>
+        <p><strong>{{ calories }} kcal/day</strong></p>
+
+        <!-- Macronutrient Breakdown Section -->
+        <div class="macronutrient">
+            <h2>Macronutrient Breakdown</h2>
+            <p>Protein: <strong>{{ macros.protein }}g</strong></p>
+            <p>Carbs: <strong>{{ macros.carbs }}g</strong></p>
+            <p>Fat: <strong>{{ macros.fats }}g</strong></p>
+        </div>
+
+        <!-- Recipe Suggestions Section -->
+        <div class="recipes">
+            <h2>Suggested Recipes</h2>
+            {% if recipes %}
+                {% for recipe in recipes %}
+                    <div class="recipe">
+                        <p>{{ recipe.title }}</p>
+                        <p>Calories: {{ recipe.calories }} kcal</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No recipe suggestions available.</p>
+            {% endif %}
+        </div>
+
+        <!-- Workout Suggestions Section -->
+        <div class="workouts">
+            <h2>Suggested Workouts</h2>
+            {% if workouts %}
+                {% for workout in workouts %}
+                    <div class="workout">
+                        <p>{{ workout }}</p>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No workout suggestions available.</p>
+            {% endif %}
+        </div>
+
+        <a href="/">Go back</a>
+    </div>
+
 </body>
 </html>
